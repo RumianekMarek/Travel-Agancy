@@ -20,23 +20,9 @@ export const getFilteredTrips = ({trips, filters}) => {
   return output;
 };
 
-export const getTripById = ({trips}, tripId) => {
-  const filtered = trips;
+export const getTripById = ({trips}, tripId) => trips.find(trip => trip.id == tripId);
 
-  // TODO - filter trips by tripId
-
-  console.log('filtering trips by tripId:', tripId, filtered);
-  return filtered.length ? filtered[0] : {error: true};
-};
-
-export const getTripsForCountry = ({trips}, countryCode) => {
-  const filtered = trips;
-
-  // TODO - filter trips by countryCode
-
-  console.log('filtering trips by countryCode:', countryCode, filtered);
-  return filtered.length ? filtered : [{error: true}];
-};
+export const getTripsForCountry = ({trips}, countryCode) => trips.filter(trip => trip.country.code == countryCode);
 
 /* ACTIONS */
 

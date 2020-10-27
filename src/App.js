@@ -1,18 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
+import {AnimatedSwitch} from 'react-router-transition';
 import PropTypes from 'prop-types';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
 
 import Home from './components/views/Home/Home';
 import Trips from './components/views/Trips/TripsContainer';
+import Countries from './components/views/Countries/CountriesContainer';
+import Regions from './components/views/Regions/RegionsContainer';
 // TODO - import other views
 import Info from './components/views/Info/Info';
 import NotFound from './components/views/NotFound/NotFound';
 
 import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
+import CountryContainer from './components/views/Country/CountryContainer';
+import TripContainer from './components/views/Trip/TripContainer';
 
 class App extends React.Component {
   static propTypes = {
@@ -37,13 +42,21 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <MainLayout>
-          <Switch location={location}>
+          <AnimatedSwitch 
+            atLeave={{ opacity: 0 }}
+            atEnter={{ opacity: 1 }}
+            atActive={{ opacity: 1 }}
+            className="switch-wrapper"
+          >
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
-            {/* TODO - add more routes for other views */}
+            <Route exact path='/countries' component={Countries} />
+            <Route exact path='/regions' component={Regions} />
+            <Route exact path='/country/:id' component={CountryContainer} />
+            <Route exact path='/trip/:id' component={TripContainer} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
-          </Switch>
+          </AnimatedSwitch>
         </MainLayout>
       </BrowserRouter>
     );
