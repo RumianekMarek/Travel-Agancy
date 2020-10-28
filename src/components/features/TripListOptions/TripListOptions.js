@@ -6,18 +6,21 @@ import {Row, Col} from 'react-flexbox-grid';
 
 class TripListOptions extends React.Component {
   handleTags(tag, checked){
-    this.props.checkBox(tag);
     if(checked) {
-      console.log('Adding tag', tag);
-
+      this.props.checkBox(tag);
     } else {
-      console.log('Removing tag', tag);
+      this.props.unCheckBox(this.props.filters.tags.indexOf(tag));
       // TODO - use action dispatcher from props
     }
   }
 
   handleDuration(type, value){
-    this.props.changeDuration(value);
+    switch (type) {
+      case 'from' : this.props.changeDurationFrom(value);
+        break;
+      case 'to' : this.props.changeDurationTo(value);
+        break;
+    }
   }
 
   handleSearch(phrase){
@@ -55,7 +58,7 @@ class TripListOptions extends React.Component {
                 <div className={styles.dropdown}>
                   {Object.keys(tags).map(tag => (
                     <label key={tag} className={styles.option}>
-                      <input type='checkbox' checked={filters.tags.indexOf(tag) > -1} onChange={event => this.handleTags(tag, event.currentTarget.checked)} />
+                      <input type='checkbox' className={tag} checked={filters.tags.indexOf(tag) > -1} onChange={event => this.handleTags(tag, event.currentTarget.checked)} />
                       {tag}
                     </label>
                   ))}
@@ -73,8 +76,11 @@ TripListOptions.propTypes = {
   tags: PropTypes.object,
   filters: PropTypes.object,
   changeSearchPhrase: PropTypes.func,
-  changeDuration: PropTypes.func,
+  changeDurationFrom: PropTypes.func,
+  changeDurationTo: PropTypes.func,
   checkBox: PropTypes.func,
+  unCheckBox: PropTypes.func,
+
 };
 
 export default TripListOptions;
