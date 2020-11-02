@@ -28,6 +28,7 @@ class TripListOptions extends React.Component {
   }
 
   render(){
+    console.log(this.props);
     const {tags, filters} = this.props;
     return (
       <div className={styles.component}>
