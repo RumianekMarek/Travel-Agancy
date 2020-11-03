@@ -4,19 +4,8 @@ import OrderOptionDropdown from'./OrderOptionDropdown';
 import OrderOptionIcons from'./OrderOptionIcons';
 import OrderOptionNumber from'./OrderOptionNumber';
 import OrderOptionCheckboxes from'./OrderOptionCheckboxes';
-import { setOrderOption } from '../../../redux/orderRedux';
-
-export const formatPrice = price => {
-  return typeof(price) != 'number'
-    ? price
-    : Math.ceil(price)
-      .toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      });
-};
+//import { setOrderOption } from '../../../redux/orderRedux';
+import {formatPrice} from '../../../utils/formatPrice';
 
 const optionTypes = {
   dropdown: OrderOptionDropdown,
@@ -25,7 +14,7 @@ const optionTypes = {
   number: OrderOptionNumber,
 };
 
-const OrderOption = ({name, type, currentValue, ...otherProps}) => {
+const OrderOption = ({name, type, setOrderOption,id , ...otherProps}) => {
   const OptionComponent = optionTypes[type];
   if(!OptionComponent){
     return null;
@@ -35,9 +24,9 @@ const OrderOption = ({name, type, currentValue, ...otherProps}) => {
         <h3 className={styles.title}>{name}</h3>
         <OptionComponent 
           {...otherProps}
-          setOptionValue={value => setOrderOption({[currentValue]: value})}
+          setOptionValue={value => setOrderOption({[id]: value})}
           formatPrice={formatPrice}
-        />
+        />{}
       </div>
     );
   }

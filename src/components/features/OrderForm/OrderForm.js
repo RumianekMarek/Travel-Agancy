@@ -11,18 +11,17 @@ class OrderForm extends React.Component {
 
   render(){
     const{tripCost, options, setOrderOption} = this.props;
-    console.log(options);
-    console.log('orderForm:',this);
     return (
       <Row>
         <div>
           {pricing.map(tag =>
             <Col mx={4} key={tag.id}>
               <OrderOption 
+                limits={tag.limits}
                 name={tag.name} 
                 type={tag.type} 
                 currentValue={options[tag.id]}
-                minValue={options[tag.id]}
+                id={tag.id}
                 setOrderOption={setOrderOption}
                 values={tag.values}
                 required={tag.required}
@@ -41,7 +40,7 @@ class OrderForm extends React.Component {
 OrderForm.propTypes= {
   tripCost: PropTypes.string,
   options: PropTypes.object,
-  setOrderOption: PropTypes.object,
+  setOrderOption: PropTypes.func,
 
 };
 

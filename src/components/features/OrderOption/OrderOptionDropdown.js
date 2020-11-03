@@ -1,14 +1,15 @@
 import React from 'react';
 import PropType from 'prop-types';
 import styles from './OrderOption.scss';
-import formatPrice from './OrderOption';
+import {formatPrice} from '../../../utils/formatPrice';
 
 const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) => {
   return (
     <select
       className={styles.dropdown}
       value={currentValue}
-      onChange={event => setOptionValue(event.currentTarget.value)}>
+      onChange={event => setOptionValue(event.currentTarget.value)}
+    >
       {required ? '' : (
         <option key='null' value=''>---</option>
       )}

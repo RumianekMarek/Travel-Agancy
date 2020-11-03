@@ -3,23 +3,25 @@ import styles from './OrderOption';
 import PropType from 'prop-types';
 
 
-const OrderOptionNumber = ({currentValue, setOptionValue}) => {
+const OrderOptionNumber = ({limits, currentValue, setOptionValue}) => {
   return (
     <div className={styles.number}>
       <input type='number' 
         className={styles.imputSmall}
         value={currentValue}
+        min={limits.min}
+        max={limits.max}
         onChange={event => {
-          setOptionValue(event.currentTarget.value); 
-          console.log(event.currentTarget.value);}}
-      />{}
+          setOptionValue(event.currentTarget.value);
+        }} />
     </div>
   );
 };
 
 OrderOptionNumber.propTypes = {
-  currentValue: PropType.number,
+  currentValue: PropType.string,
   setOptionValue: PropType.func,
+  limits: PropType.object,
 };
 
 export default OrderOptionNumber;

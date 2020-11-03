@@ -35,3 +35,14 @@
   display: flex;
   flex-direction: column;
 }
+
+.iconActive{
+  cursor: pointer;
+  width: 80%;
+  padding: ($base-size / 2);
+  background: $color-primary;
+
+  i {
+    padding-right: ($base-size / 2);
+  }
+}

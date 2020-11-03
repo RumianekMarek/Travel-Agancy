@@ -11,7 +11,6 @@ import {formatPrice} from '../../../utils/formatPrice';
 class OrderSummary extends React.Component {
 
   getTotalPrice(){
-    console.log('OrderSummary.props', this.props);
     const total = calculateTotal(formatPrice(this.props.tripCost), this.props.options);
     return total;
   }
