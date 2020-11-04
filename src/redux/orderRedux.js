@@ -9,9 +9,11 @@ const createActionName = name => `app/${reducerName}/${name}`;
 
 // action types
 export const SET_OPTION = createActionName('SET_OPTION');
+export const SET_DATE = createActionName('SET_DATE');
 
 // action creators
 export const setOrderOption = payload => ({ payload, type: SET_OPTION });
+export const setDate = payload => ({ payload, type: SET_DATE });
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -23,6 +25,11 @@ export default function reducer(statePart = [], action = {}) {
           ...statePart.options,
           ...action.payload,
         },
+      };
+    case SET_DATE:
+      return {
+        ...statePart,
+        date: action.payload,
       };
     default:
       return statePart;

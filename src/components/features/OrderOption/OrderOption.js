@@ -4,14 +4,17 @@ import OrderOptionDropdown from'./OrderOptionDropdown';
 import OrderOptionIcons from'./OrderOptionIcons';
 import OrderOptionNumber from'./OrderOptionNumber';
 import OrderOptionCheckboxes from'./OrderOptionCheckboxes';
-//import { setOrderOption } from '../../../redux/orderRedux';
 import {formatPrice} from '../../../utils/formatPrice';
+import OrderContactName from './OrderContactName';
+import OrderContactDate from './OrderContactDate';
 
 const optionTypes = {
   dropdown: OrderOptionDropdown,
   icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
+  text: OrderContactName,
+  date: OrderContactDate,
 };
 
 const OrderOption = ({name, type, setOrderOption,id , ...otherProps}) => {
