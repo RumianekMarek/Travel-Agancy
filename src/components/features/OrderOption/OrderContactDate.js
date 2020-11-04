@@ -7,9 +7,7 @@ class OrderContactDate extends React.Component {
   render(){
     return(
       <DatePicker selected={this.props.currentValue}
-        onChange={event => {
-          console.log(String(event));
-          this.props.setOptionValue(event);}}
+        onChange={event => this.props.setOptionValue(event)}
       />
     );
   }
@@ -17,7 +15,7 @@ class OrderContactDate extends React.Component {
 
 OrderContactDate.propTypes= {
   setOptionValue: PropTypes.func,
-  currentValue: PropTypes.date,
+  currentValue: PropTypes.instanceOf(Date),
 };
 
 export default OrderContactDate;

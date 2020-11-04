@@ -29,9 +29,15 @@ export default function reducer(statePart = [], action = {}) {
     case SET_DATE:
       return {
         ...statePart,
-        date: action.payload,
+        startDate: action.payload,
       };
     default:
-      return statePart;
+      return {
+        ...statePart,
+        options: {
+          ...statePart.options,
+          startDate: new Date(),
+        },
+      };
   }
 }
