@@ -7,7 +7,7 @@ const OrderOptionNumber = ({limits, currentValue, setOptionValue}) => {
   return (
     <div className={styles.number}>
       <input type='number' 
-        className={styles.imputSmall}
+        className={styles.inputSmall}
         value={currentValue}
         min={limits.min}
         max={limits.max}

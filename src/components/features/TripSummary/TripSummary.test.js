@@ -26,9 +26,9 @@ describe('Component TripSummary', () => {
     const days = 3;
     const component = shallow(<TripSummary id='id' image='image.jpg' name={name} cost={cost} days={days} tags={tags}/>);
     expect(component.containsAllMatchingElements([
-      <h3>{name}</h3>,
-      <span>{days} days</span>,
-      <span>from {cost}</span>,
+      <h3 key={name}>{name}</h3>,
+      <span key={days}>{days} days</span>, 
+      <span key={cost}>from {cost}</span>,
     ]));
   });
 

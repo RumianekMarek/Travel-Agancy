@@ -5,7 +5,7 @@ import OrderOptionIcons from'./OrderOptionIcons';
 import OrderOptionNumber from'./OrderOptionNumber';
 import OrderOptionCheckboxes from'./OrderOptionCheckboxes';
 import {formatPrice} from '../../../utils/formatPrice';
-import OrderContactName from './OrderContactName';
+import OrderOptionName from './OrderOptionName';
 import OrderContactDate from './OrderContactDate';
 
 const optionTypes = {
@@ -13,7 +13,7 @@ const optionTypes = {
   icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
-  text: OrderContactName,
+  text: OrderOptionName,
   date: OrderContactDate,
 };
 

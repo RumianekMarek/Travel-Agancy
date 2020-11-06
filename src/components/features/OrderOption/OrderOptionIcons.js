@@ -5,7 +5,7 @@ import Icon from '../../common/Icon/Icon';
 
 const OrderOptionIcons = ({values, currentValue, setOptionValue}) => {
   return (
-    <div className='styles.component icon' >
+    <div className='styles.component' >
       {values.map(key =>
         <div className={currentValue == key.id ? styles.iconActive : styles.icon} key={key.id} value={key.id}
           onClick={() => setOptionValue(key.id)}
