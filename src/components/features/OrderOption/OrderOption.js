@@ -17,7 +17,7 @@ const optionTypes = {
   date: OrderContactDate,
 };
 
-const OrderOption = ({name, type, setOrderOption,id , ...otherProps}) => {
+const OrderOption = ({name, type, setOrderOption, id , ...otherProps}) => {
   const OptionComponent = optionTypes[type];
   if(!OptionComponent){
     return null;
@@ -28,6 +28,7 @@ const OrderOption = ({name, type, setOrderOption,id , ...otherProps}) => {
         <OptionComponent 
           {...otherProps}
           setOptionValue={value => setOrderOption({[id]: value})}
+          id ={id}
           formatPrice={formatPrice}
         />{}
       </div>
